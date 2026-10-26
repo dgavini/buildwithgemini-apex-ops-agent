@@ -1,198 +1,193 @@
-<div align="center">
+# 🚀 Apex Operations Hub · AI Agent & Multi-Task Web Application
 
-<img src="assets/build-with-gemini-banner.png" alt="Build with Gemini" width="100%" />
+> **An Agent-First Operations Platform powered by Google Cloud Vertex AI (ADK), Native Firestore, and Playwright Browser Automation.**
 
-# 🚀 Build with Gemini · Track 3
+Apex Operations Hub combines an autonomous AI agent (**`apex-ops-agent`**) with a modern **React application (`task-hub-app`)** to manage and execute high-impact corporate operations workflows:
+1. **Employee Onboarding** (Identity provisioning, department assignment, and hardware equipment bundles)
+2. **Expense Claims Management** (Automatic financial policy rules & manager review routing for expenses > $500)
+3. **IT Incident & Support Triage** (Outage logging, severity classification, and infrastructure mitigation recording)
+4. **Live Activity & Task Audit Trail** (Real-time logging of all completed operations across the enterprise)
 
-### The starter kit for Track 3 of the Build with Gemini World Tour, and a showcase of what participants built with it.
-
-Clone this repo, open [Antigravity](https://antigravity.google), and build your own agent-first app on Google Cloud. Every project in the [gallery below](#-featured-projects) was built the same way: prototyped with Antigravity and `agents-cli`, equipped with Memory, tools, and storage, deployed to Agent Platform, and given a face on Cloud Run.
-
-<br/>
-
-![Build with Gemini](https://img.shields.io/badge/Build%20with%20Gemini-World%20Tour-4285F4?logo=google&logoColor=white)
-![Track 3](https://img.shields.io/badge/Track%203-Agent--First%20Apps-EA4335)
-![Google Cloud](https://img.shields.io/badge/Google%20Cloud-Agent%20Platform-4285F4?logo=googlecloud&logoColor=white)
-![Built with ADK](https://img.shields.io/badge/Built%20with-ADK%20%2B%20agents--cli-34A853)
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
-![Projects](https://img.shields.io/badge/Projects-8-blue)
-
-<sub>📖 <a href="https://cszhu.github.io/build-with-gemini/">Lab Guide</a> · 🛠️ <a href="https://google.github.io/agents-cli/guide/getting-started/">agents-cli</a> · 🤖 <a href="https://google.github.io/adk-docs/">ADK</a></sub>
-
-</div>
+The agent operates in two modes:
+* **Backend API & Data Mode**: Directly querying and writing records to **Google Cloud Firestore**.
+* **Autonomous UI Driver Mode**: Using **Playwright** to navigate, fill forms, submit tasks, and read feedback directly on the live React web UI.
 
 ---
 
-## 📚 Table of Contents
+## 📸 Visual Demos
 
-- [🧩 Anatomy of a Track 3 Project](#-anatomy-of-a-track-3-project)
-- [📂 Featured Projects](#-featured-projects)
-  - [🛍️ Commerce & Marketplace Agents](#️-commerce--marketplace-agents)
-  - [🍳 Food & Recipe Agents](#-food--recipe-agents)
-  - [✈️ Travel & Local Agents](#️-travel--local-agents)
-  - [💪 Health, Fitness & Wellness Agents](#-health-fitness--wellness-agents)
-  - [📚 Learning & Knowledge Agents](#-learning--knowledge-agents)
-  - [🎨 Creative & Media Agents](#-creative--media-agents)
-  - [🏢 Productivity & Enterprise Agents](#-productivity--enterprise-agents)
-  - [🧪 Experimental & Other](#-experimental--other)
-- [🧠 What's in this Repo](#-whats-in-this-repo)
-- [🧰 Build Your Own](#-build-your-own)
-- [📚 Resources](#-resources)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
+| Task 1: Employee Onboarding | Task 2: Expense Claim Auto-Approval |
+|:---:|:---:|
+| ![Task 1 Onboarding](task-hub-app/demo_screenshots/02_task1_onboard_success.png) | ![Task 2 Expense](task-hub-app/demo_screenshots/03_task2_expense_success.png) |
+
+| Task 3: IT Incident Triage | Live Activity & Audit Log |
+|:---:|:---:|
+| ![Task 3 Incident](task-hub-app/demo_screenshots/04_task3_incident_success.png) | ![Live Audit Feed](task-hub-app/demo_screenshots/05_activity_feed_summary.png) |
 
 ---
 
-## 🧩 Anatomy of a Track 3 Project
+## 🧩 Architecture
 
-Every app in this collection is built from the same set of Google Cloud building blocks introduced in the lab. Once you understand this shape, you can read any project here at a glance:
-
-| Layer | What it does | Powered by |
-|---|---|---|
-| 🤖 **The Agent** | The core reasoning loop | [ADK](https://google.github.io/adk-docs/) + [`agents-cli`](https://google.github.io/agents-cli/guide/getting-started/), scaffolded with [Antigravity](https://antigravity.google) |
-| 🧠 **Memory** | Remembers facts across sessions | [Agent Platform Memory Bank](https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank) |
-| 🗄️ **Structured data** | Inventory, records, lists | [Firestore](https://console.cloud.google.com/firestore) |
-| 🖼️ **Files & blobs** | Images, media, assets | [Cloud Storage](https://console.cloud.google.com/storage) |
-| 🔧 **Tools** | Take real actions and fetch real data | ADK function tools |
-| 🎨 **Media generation** | Creates images (and video) on demand | `gemini-3.1-flash-lite-image` (Nano Banana 2 Lite) · Omni (video) |
-| 🧪 **Code sandbox** | Safely runs generated code | Agent Platform code execution |
-| 🪟 **Agent-first UI** | Cards and tables instead of plain text | [A2UI](https://adk.dev/integrations/a2ui/) |
-| 🌐 **Frontend** | A shareable web face | FastAPI proxy on [Cloud Run](https://cloud.google.com/run) |
-
----
-
-## 📂 Featured Projects
-
-A showcase of what workshop participants built with this lab. Entries are added here from the swag and gallery submission form after each event, so the categories below start empty and fill in over time. Browse them for inspiration, or [submit your own](#-contributing) once you've published your project with the `publish-to-github` skill.
-
-<!--
-Add one entry per project, in this format:
-- 🌿 **[Project Name](https://github.com/their-handle/their-repo)**: one-line description of what it does. <br/> <sub>by [@handle](https://github.com/handle)</sub>
-
-Bump the "Projects" badge count at the top when you add one.
--->
-
-### 🛍️ Commerce & Marketplace Agents
-
-### 🍳 Food & Recipe Agents
-
-- 🥫 **[Smart Pantry Recipe Concierge](https://github.com/matthewrose/buildwithgemini-smart-pantry-recipe-concierge)**: Tracks your pantry and recommends recipes grounded in a real recipe corpus. <br/> <sub>by [@matthewrose](https://github.com/matthewrose)</sub>
-
-### ✈️ Travel & Local Agents
-
-- ⛈️ **[SafeStageWX](https://github.com/felix1028/buildwithgemini-safestagewx)**: An agentic mobile app that helps event planners identify weather threats and climate risks for an event given its date and location, providing tailored preparedness timelines from months out down to hourly day-of forecasts. <br/> <sub>by [@felix1028](https://github.com/felix1028)</sub>
-- 🌇 **[Sidewalk & Sun](https://github.com/OlafHaalstra/buildwithgemini-sidewalk-and-sun)**: Recommends sunny or shaded NYC spots from a curated 500-venue corpus, plotted on an interactive map. <br/> <sub>by [@OlafHaalstra](https://github.com/OlafHaalstra)</sub>
-
-### 💪 Health, Fitness & Wellness Agents
-
-- 🏊 **[TriCoach AI](https://github.com/common-aman/buildwithgemini-tricoach-ai)**: A triathlon coach that logs workouts, computes training zones, and generates motivational visuals. <br/> <sub>by [@common-aman](https://github.com/common-aman)</sub>
-
-### 📚 Learning & Knowledge Agents
-
-- 🎤 **[Interview Coach (PrepPal)](https://github.com/VineethBaradi/buildwithgemini-interview-coach)**: A mock-interview coach that runs LLM-driven practice sessions from a Firestore question bank and gives performance feedback. <br/> <sub>by [@VineethBaradi](https://github.com/VineethBaradi)</sub>
-
-### 🎨 Creative & Media Agents
-
-### 🏢 Productivity & Enterprise Agents
-
-- 🔧 **[GitCraft](https://github.com/fpobletemu/buildwithgemini-gitcraft)**: A developer git assistant that inspects your repo and drafts Conventional-Commits-style messages, grounded in a commit-style guide. <br/> <sub>by [@fpobletemu](https://github.com/fpobletemu)</sub>
-- 🖥️ **[IT Helpdesk Agent](https://github.com/NaweedAhmadi/buildwithgemini-it-helpdesk-agent)**: An IT support assistant that answers from a knowledge base and remembers context across sessions, with a ticket dashboard UI. <br/> <sub>by [@NaweedAhmadi](https://github.com/NaweedAhmadi)</sub>
-
-### 🧪 Experimental & Other
-
-- 🃏 **[Poker Agent](https://github.com/jakecho1108/buildwithgemini-poker-agent)**: A poker trainer with a real 800-iteration Monte Carlo equity engine and strategy tips grounded in a poker playbook. <br/> <sub>by [@jakecho1108](https://github.com/jakecho1108)</sub>
-
----
-
-## 🧠 What's in this Repo
-
-The `.agents/` folder teaches Antigravity how to build agents on Google Cloud.
-
-### Skills
-
-A **skill** is a bundle of instructions that loads automatically when it's relevant, so the agent gets the workflow right in fewer steps instead of rediscovering it each time.
-
-| Skill | What it does |
-| --- | --- |
-| [`pick-your-agent-project`](.agents/skills/pick-your-agent-project/SKILL.md) | Brainstorm your app idea and write a project brief |
-| [`troubleshoot-lab-setup`](.agents/skills/troubleshoot-lab-setup/SKILL.md) | Verify your environment and fix common setup errors |
-| [`memory-bank-setup`](.agents/skills/setup-memory-bank/SKILL.md) | Add cross-session memory to your agent with Vertex AI Memory Bank |
-| [`enable-a2ui`](.agents/skills/enable-a2ui/SKILL.md) | Make your agent reply with rich UI cards (A2UI) in the ADK dev UI |
-| [`build-agent-frontend`](.agents/skills/build-agent-frontend/SKILL.md) | Generate a FastAPI chat frontend and ship it to Cloud Run |
-| [`record-demo`](.agents/skills/record-demo/SKILL.md) | Record a branded demo video of your agent, with an optional AI soundtrack |
-| [`publish-to-github`](.agents/skills/publish-to-github/SKILL.md) | Publish your finished project to your own GitHub and submit it for swag |
-
-### Pre-configured tools (MCP)
-
-[`.agents/mcp_config.json`](.agents/mcp_config.json) wires up two [Model Context Protocol](https://modelcontextprotocol.io/) servers that authenticate with your gcloud credentials, so the agent can look things up instead of guessing:
-
-- **Firebase**: work directly with Firestore and other Firebase services
-- **Google Developer Knowledge**: grounded access to Google's official docs (Cloud, Firebase, ADK, Agent Platform)
-
-### Layout
-
-```text
-.agents/
-├── mcp_config.json    # Firebase + Developer Knowledge MCP servers
-├── rules/             # workspace rules (only deploy when asked)
-└── skills/            # the workshop skills listed above
+```
+┌────────────────────────────────────────────────────────┐
+│                   User / Operator                      │
+└──────────────────────────┬─────────────────────────────┘
+                           │ Natural language queries
+                           ▼
+┌────────────────────────────────────────────────────────┐
+│        Apex Operations Agent (Google ADK)              │
+│        Model: Gemini 2.5 Flash                         │
+└────────────┬─────────────────────────────┬─────────────┘
+             │                             │
+             │ Browser Automation          │ Database I/O
+             ▼                             ▼
+┌──────────────────────────┐  ┌──────────────────────────┐
+│     React Web App        │  │  Google Cloud Firestore  │
+│  (task-hub-app @ :5173)  │  │  (Collection: operations)│
+│  • Onboarding            │  │  • EMP-*, EXP-*, INC-*   │
+│  • Expense Claims        │  └──────────────────────────┘
+│  • IT Incident Triage    │
+│  • Live Audit Feed       │
+└──────────────────────────┘
 ```
 
 ---
 
-## 🧰 Build Your Own
+## 🛠️ Step-by-Step Guide: Running on a New System
 
-The full, step-by-step walkthrough lives on the **[lab guide](https://cszhu.github.io/build-with-gemini/)**. This is the short version.
+Follow these steps to set up and run this project from scratch on any computer or server.
 
-**Prerequisites** (the lab workstation comes with all of this pre-installed; you'll need it if you're running on your own machine):
+### 1. Prerequisites
+Ensure the target system has:
+* **Git**: `git --version`
+* **Node.js (v18+) & npm**: `node --version`
+* **Python (3.11 – 3.13)**: `python3 --version`
+* **Google Cloud SDK (`gcloud`)**: [Install instructions](https://cloud.google.com/sdk/docs/install)
+* **Google Chrome** (or Chromium)
 
-- A **Google Cloud project** with billing enabled
-- **[Antigravity](https://antigravity.google)** (`agy`), the coding agent that loads the skills above
-- **[agents-cli](https://google.github.io/agents-cli/guide/getting-started/)**, built on the [Agent Development Kit (ADK)](https://google.github.io/adk-docs/)
-- Authenticated gcloud: `gcloud auth login` and `gcloud auth application-default login`
-- A personal **GitHub account** for the final publish-and-submit step
+---
 
-**Quickstart:**
-
+### 2. Clone the Repository
 ```bash
-git clone https://github.com/cszhu/build-with-gemini
-cd build-with-gemini
-agy
+git clone https://github.com/dgavini/buildwithgemini-apex-ops-agent.git
+cd buildwithgemini-apex-ops-agent
 ```
-
-On startup, Antigravity scans the `.agents/` folder and loads the skills and tools above automatically. In the AGY prompt:
-
-```text
-/skills            # see the installed skills
-/mcp               # confirm the firebase + google-developer-knowledge tools are connected
-```
-
-```text
-Verify my setup.   # runs the troubleshoot-lab-setup skill to check your environment
-```
-
-Then follow the [lab guide](https://cszhu.github.io/build-with-gemini/) to design, build, deploy, and share your agent, start to finish.
 
 ---
 
-## 📚 Resources
-
-- **[Lab guide](https://cszhu.github.io/build-with-gemini/)**: the step-by-step workshop
-- [Antigravity](https://antigravity.google)
-- [agents-cli](https://google.github.io/agents-cli/guide/getting-started/)
-- [Agent Development Kit (ADK)](https://google.github.io/adk-docs/)
-- [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform)
+### 3. Start the React Web Application (`task-hub-app`)
+In **Terminal 1**:
+```bash
+cd task-hub-app
+npm install
+npm run dev
+```
+* The web app will start on **`http://localhost:5173`**.
+* Keep this terminal running.
 
 ---
 
-## 🤝 Contributing
+### 4. Authenticate with Google Cloud
+In **Terminal 2**, authenticate with your GCP project so the agent can access Gemini and Firestore:
+```bash
+gcloud auth login
+gcloud auth application-default login
+gcloud config set project YOUR_PROJECT_ID
+```
 
-**Built something?** Publish it with the `publish-to-github` skill and submit it through the form it gives you. Submissions get you swag, and standout projects get added to the [Featured Projects](#-featured-projects) gallery above.
+---
 
-**Found a bug?** If you hit a rough edge in a skill or the lab, please [open an issue](https://github.com/cszhu/build-with-gemini/issues).
+### 5. Set Up the Python Agent (`apex-ops-agent`)
+In **Terminal 2**:
+```bash
+cd apex-ops-agent
+
+# Install dependencies using virtual environment:
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+playwright install chromium
+```
+*(Alternatively, if using `agents-cli`: `uv tool install google-agents-cli && agents-cli install`)*
+
+---
+
+### 6. (Optional) Seed the Firestore Backend
+To populate initial task records in Firestore:
+```bash
+python seed_firestore.py
+```
+
+---
+
+### 7. Run the Agent & Automations
+
+#### A. Interactive Natural Language Execution (`agents-cli run`)
+```bash
+# Query Firestore tasks:
+agents-cli run "List all operations tasks from Firestore"
+
+# Drive the React Web UI to onboard an employee:
+agents-cli run "Submit an employee onboarding task on the web UI for Bruce Wayne in Security with email b.wayne@company.com with a laptop and monitor."
+
+# Drive the React Web UI to submit an expense claim:
+agents-cli run "Submit an urgent expense claim on the web UI for $850.00 to AWS Cloud Infrastructure for server hosting"
+```
+
+#### B. Run the On-Screen Visual Demo Script
+Watch Chrome automatically launch on your screen, navigate the UI, fill the forms, and complete all 3 tasks with visual pauses:
+```bash
+python task-hub-app/run_live_demo.py
+```
+
+#### C. Query the Deployed Cloud Agent via A2A
+The agent is also deployed live to **Google Cloud Vertex AI Agent Runtime**. Any machine with `gcloud` authenticated can invoke it remotely over the **A2A protocol**:
+```bash
+agents-cli run "List all operations tasks from Firestore" \
+  --url https://us-east1-aiplatform.googleapis.com/reasoningEngines/v1/projects/994949497408/locations/us-east1/reasoningEngines/3127845598720425984/api \
+  --mode a2a
+```
+
+---
+
+## ☁️ Cloud Deployment Details
+
+* **Platform:** Google Cloud Vertex AI Agent Runtime (Reasoning Engine)
+* **Region:** `us-east1`
+* **Protocol:** Agent-to-Agent (A2A v1.0)
+* **Resource ID:** `projects/994949497408/locations/us-east1/reasoningEngines/3127845598720425984`
+* **Agent Card Endpoint:** [Agent Card JSON](https://us-east1-aiplatform.googleapis.com/reasoningEngines/v1/projects/994949497408/locations/us-east1/reasoningEngines/3127845598720425984/api/a2a/app/.well-known/agent-card.json)
+
+---
+
+## 📂 Repository Structure
+
+```
+├── README.md                       # Complete Project Documentation & Run Guide
+├── project_brief.md                # Architectural Design Brief
+├── apex-ops-agent/                 # ADK AI Agent
+│   ├── app/
+│   │   ├── agent.py                # Root Agent definition & tool binding
+│   │   ├── browser_tools.py        # Playwright UI automation tools
+│   │   └── firestore_tools.py      # Firestore read/write operations tools
+│   ├── seed_firestore.py           # Database initial seeder script
+│   ├── pyproject.toml              # Python dependencies & build config
+│   └── agents-cli-manifest.yaml    # Agent Runtime deployment manifest
+└── task-hub-app/                   # React Frontend Web Application
+    ├── src/
+    │   ├── components/
+    │   │   ├── OnboardingTask.jsx  # Task 1: Employee Onboarding
+    │   │   ├── ExpenseTask.jsx     # Task 2: Expense Claims
+    │   │   ├── IncidentTask.jsx    # Task 3: Incident Triage
+    │   │   └── ActivityLog.jsx     # Real-time task audit feed
+    │   └── App.jsx                 # Main layout & tab router
+    ├── run_live_demo.py            # Playwright visual runner (Scenario 1)
+    ├── run_demo_2.py               # Playwright visual runner (Scenario 2)
+    ├── run_demo_task3.py           # Playwright visual runner (Task 3 focus)
+    └── TASK_AUTOMATION_GUIDE.md    # In-depth selectors & automation doc
+```
 
 ---
 
 ## 📄 License
-
-This is not an officially supported Google product and is provided for the Build with Gemini workshop for demonstration purposes only.
+Apache-2.0
